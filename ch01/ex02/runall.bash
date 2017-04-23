@@ -1,3 +1,1 @@
-go build main.go
-./main a b c
-rm main
+go run main.go a b c
