@@ -1,4 +1,4 @@
-package main
+package popcount
 
 // pc[i] is the population count of i.
 var pc [256]byte
@@ -16,8 +16,4 @@ func PopCount(x uint64) int {
 		sum += pc[byte(x>>(uint(i)*8))]
 	}
 	return int(sum)
-}
-
-func main() {
-	PopCount(2)
 }
