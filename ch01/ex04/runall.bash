@@ -1,0 +1,1 @@
+go run main.go input.txt input1.txt input2.txt
