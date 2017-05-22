@@ -19,3 +19,17 @@ func assertEqual(input uint64, expected int, t *testing.T) {
 		t.Errorf("got %v\nwant %v", actual, expected)
 	}
 }
+
+var input uint64 = 0xffff
+
+func BenchmarkPopCountTable(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCountTable(input)
+	}
+}
+
+func BenchmarkPopCount(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(input)
+	}
+}
