@@ -1,0 +1,1 @@
+go run main.go -sha384 x
