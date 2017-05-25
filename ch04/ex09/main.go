@@ -8,7 +8,7 @@ import (
 
 func main() {
 	file, err := os.Open(os.Args[1])
-	if err != err {
+	if err != nil {
 		fmt.Fprintln(os.Stderr, "Failed file open")
 	}
 	input := bufio.NewScanner(file)
