@@ -31,8 +31,6 @@ func CreateIssue(body io.Reader, accessToken string) (*Issue, error) {
 		return nil, err
 	}
 
-	fmt.Println(resp.StatusCode)
-
 	if resp.StatusCode != http.StatusOK {
 		resp.Body.Close()
 		return nil, err
