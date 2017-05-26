@@ -14,7 +14,7 @@ import (
 
 type Comic struct {
 	Month      string
-	Num        int
+	Num        int `json:"num"`
 	Link       string
 	Year       string
 	News       string
@@ -37,7 +37,7 @@ func main() {
 	}
 	files, _ := fetchAll(num)
 	q := os.Args[1]
-	fmt.Println("q: " + q)
+
 	var comics []Comic
 	for _, file := range files {
 		c := parse(file)
@@ -72,10 +72,10 @@ func getLatestNum() (int, error) {
 }
 
 func fetchAll(num int) ([]string, error) {
-	dir := "./data/"
+	dir := "./data"
 	idToReplace := "{ID}"
 	url := "https://xkcd.com/" + idToReplace + "/info.0.json"
-	fmt.Println("num: " + string(num))
+
 	for i := 1; i <= num; i++ {
 		path := dir + "/" + strconv.Itoa(i) + ".json"
 		_, err := os.Stat(path)
@@ -92,7 +92,6 @@ func fetchAll(num int) ([]string, error) {
 			fmt.Println(" ERROR!")
 			return nil, fmt.Errorf("fetch failed: %s", resp.Status)
 		}
-		fmt.Print(".")
 
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {

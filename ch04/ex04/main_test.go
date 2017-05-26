@@ -4,8 +4,10 @@ import "testing"
 
 func TestComma(t *testing.T) {
 	slice := []int{1, 2, 3, 4, 5}
-	rotate(slice)
+	rotate(slice, 1)
 	assertEqual([]int{5, 1, 2, 3, 4}, slice, t)
+	rotate(slice, 2)
+	assertEqual([]int{3, 4, 5, 1, 2}, slice, t)
 }
 
 func assertEqual(expected, actual []int, t *testing.T) {
