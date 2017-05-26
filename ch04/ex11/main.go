@@ -59,14 +59,9 @@ func create() {
 	issue.Body = *body
 
 	json, _ := json.Marshal(issue)
-	result, err := github.CreateIssue(bytes.NewBuffer(json), *token)
+	err := github.CreateIssue(bytes.NewBuffer(json), *token)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-	if result == nil {
-		log.Fatal("Error")
-		return
-	}
-	fmt.Printf("Created issue: %v\n", result.Title)
 }

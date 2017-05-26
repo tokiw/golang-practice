@@ -1,7 +1,6 @@
 package github
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,14 +8,14 @@ import (
 )
 
 // CreateIssue the GitHub issue.
-func CreateIssue(body io.Reader, accessToken string) (*Issue, error) {
+func CreateIssue(body io.Reader, accessToken string) error {
 	req, err := http.NewRequest(
 		"POST",
 		IssuesURL+"/repos/"+Repo+"/issues?",
 		body,
 	)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// Content-Type 設定
@@ -28,19 +27,13 @@ func CreateIssue(body io.Reader, accessToken string) (*Issue, error) {
 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Failed file open")
-		return nil, err
+		return err
 	}
 
 	if resp.StatusCode != http.StatusOK {
 		resp.Body.Close()
-		return nil, err
+		return err
 	}
-
-	var result Issue
-	if err = json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		resp.Body.Close()
-		return nil, err
-	}
-	resp.Body.Close()
-	return &result, nil
+	fmt.Println("Create!!")
+	return nil
 }
