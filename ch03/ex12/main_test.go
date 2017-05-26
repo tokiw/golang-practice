@@ -7,6 +7,7 @@ func TestComma(t *testing.T) {
 	assertEqual(true, anagram("ab", "ab"), t)
 	assertEqual(true, anagram("ab", "ba"), t)
 	assertEqual(true, anagram("ab c", "a cb"), t)
+	assertEqual(true, anagram("日本語", "語日本"), t)
 }
 
 func assertEqual(expected, actual bool, t *testing.T) {

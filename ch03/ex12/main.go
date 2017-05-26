@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"os"
-	"strings"
 )
+
+type Runes []rune
 
 func main() {
 	if anagram(os.Args[1], os.Args[2]) {
@@ -15,13 +17,25 @@ func main() {
 }
 
 func anagram(s1, s2 string) bool {
-	if len(s1) != len(s2) {
+	runes1 := bytes.Runes([]byte(s1))
+	runes2 := bytes.Runes([]byte(s2))
+
+	if len(runes1) != len(runes2) {
 		return false
 	}
-	for i := 0; i < len(s1); i++ {
-		if !strings.Contains(s2, string(s1[i])) {
+	for i := 0; i < len(runes1); i++ {
+		if !contains(runes2, runes1[i]) {
 			return false
 		}
 	}
 	return true
+}
+
+func contains(array []rune, item rune) bool {
+	for _, r := range array {
+		if item == r {
+			return true
+		}
+	}
+	return false
 }
