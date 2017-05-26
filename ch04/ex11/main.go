@@ -51,6 +51,7 @@ func create() {
 	f := flag.NewFlagSet(os.Args[0]+" "+sub, flag.ExitOnError)
 	title := f.String("title", "111", "Issue Title")
 	body := f.String("body", "", "Issue Body")
+	token := f.String("token", "", "Access Token")
 	f.Parse(os.Args[2:])
 
 	var issue github.Issue
@@ -58,7 +59,7 @@ func create() {
 	issue.Body = *body
 
 	json, _ := json.Marshal(issue)
-	result, err := github.CreateIssue(bytes.NewBuffer(json))
+	result, err := github.CreateIssue(bytes.NewBuffer(json), *token)
 	if err != nil {
 		log.Fatal(err)
 		return

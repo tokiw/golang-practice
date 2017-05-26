@@ -57,7 +57,9 @@ func f(x, y float64) float64 {
 
 func validate(values []float64) bool {
 	for _, value := range values {
-		return !math.IsNaN(value) && !math.IsInf(value, 0)
+		if math.IsNaN(value) || math.IsInf(value, 0) {
+			return false
+		}
 	}
 	return true
 }
