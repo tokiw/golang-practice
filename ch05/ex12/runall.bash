@@ -1,0 +1,1 @@
+go run outline.go https://www.google.com
