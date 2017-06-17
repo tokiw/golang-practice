@@ -14,6 +14,7 @@ func main() {
 	fmt.Println(string(ja))
 }
 
+// 新しいスライスを返したらだめ！！
 func reverse(s []byte) []byte {
 	runes := bytes.Runes(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {

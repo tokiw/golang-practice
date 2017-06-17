@@ -1,0 +1,1 @@
+go run findtags.go https://golang.org

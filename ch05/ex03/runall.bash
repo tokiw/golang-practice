@@ -1,0 +1,1 @@
+go run findtext.go https://golang.org

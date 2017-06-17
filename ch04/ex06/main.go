@@ -13,6 +13,7 @@ func main() {
 	fmt.Println(string(replaceSpace([]byte(str2))))
 }
 
+// 別のスペースを返しているのでだめ！！
 func replaceSpace(s []byte) []byte {
 	runes := bytes.Runes(s)
 
