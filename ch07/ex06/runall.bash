@@ -1,0 +1,1 @@
+go run main.go -temp 20C && go run main.go -temp 20F && go run main.go -help
