@@ -16,7 +16,7 @@ func max(vals ...int) int {
 		panic("no argument")
 	}
 	max := vals[0]
-	for _, val := range vals {
+	for _, val := range vals[1:] {
 		if max < val {
 			max = val
 		}
@@ -38,7 +38,7 @@ func min(vals ...int) int {
 		panic("no argument")
 	}
 	min := vals[0]
-	for _, val := range vals {
+	for _, val := range vals[1:] {
 		if min > val {
 			min = val
 		}

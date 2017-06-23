@@ -20,7 +20,7 @@ func (b *CountWriter) Write(p []byte) (int, error) {
 func CountingWriter(w io.Writer) (io.Writer, *int64) {
 	cw := &CountWriter{}
 	cw.writer = w
-	return cw.writer, &cw.count
+	return cw, &cw.count
 }
 
 func main() {

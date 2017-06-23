@@ -17,7 +17,7 @@ func TestAddAll(t *testing.T) {
 func TestIntersectWith(t *testing.T) {
 	var x, y IntSet
 	x.AddAll(1, 144, 9, 42)
-	y.AddAll(1, 2, 144)
+	y.AddAll(1, 2, 144, 300, 500)
 
 	x.IntersectWith(&y)
 
