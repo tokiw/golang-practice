@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var Limit time.Duration = 10
+const timeout time.Duration = 10
 
 func echo(c net.Conn, shout string, delay time.Duration) {
 	fmt.Fprintln(c, "\t", strings.ToUpper(shout))
@@ -36,10 +36,10 @@ loop:
 		case text := <-s:
 			wg.Add(1)
 			go func() {
+				defer wg.Done()
 				echo(c, text, 1*time.Second)
-				wg.Done()
 			}()
-		case <-time.After(Limit * time.Second):
+		case <-time.After(timeout * time.Second):
 			log.Println("Time out")
 			break loop
 		}
