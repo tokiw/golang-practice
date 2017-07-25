@@ -11,9 +11,9 @@ type CountWriter struct {
 	count  int64
 }
 
-func (b *CountWriter) Write(p []byte) (int, error) {
-	c, err := b.writer.Write(p)
-	b.count += int64(c)
+func (cw *CountWriter) Write(p []byte) (int, error) {
+	c, err := cw.writer.Write(p)
+	cw.count += int64(c)
 	return c, err
 }
 
