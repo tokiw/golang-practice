@@ -1,0 +1,1 @@
+go run findlinks.go links.go https://golang.org
