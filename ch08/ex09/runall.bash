@@ -1,1 +1,1 @@
-go run main.go $HOME
+go run main.go $HOME ../
