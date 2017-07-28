@@ -41,9 +41,12 @@ func drawParallel(dst io.Writer, num int) {
 	var wg sync.WaitGroup
 
 	for i := 0; i < cells; i++ {
+		tokens <- struct{}{}
 		go func(i int) {
+			defer func() {
+				<-tokens
+			}()
 			wg.Add(1)
-			tokens <- struct{}{}
 			var buf bytes.Buffer
 			for j := 0; j < cells; j++ {
 				ax, ay := corner(i+1, j)
@@ -55,7 +58,6 @@ func drawParallel(dst io.Writer, num int) {
 			}
 			polygons[i] = buf.String()
 			wg.Done()
-			<-tokens
 		}(i)
 	}
 	wg.Wait()
