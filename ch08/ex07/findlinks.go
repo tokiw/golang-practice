@@ -22,6 +22,7 @@ func crawl(u string, hosts []string) []string {
 		lurl, _ := url.Parse(link)
 		for _, host := range hosts {
 			hurl, _ := url.Parse(host)
+			// そもそも取りに行かないほうがいい。。。
 			if hurl.Host == lurl.Host {
 				makefile(lurl)
 			}
