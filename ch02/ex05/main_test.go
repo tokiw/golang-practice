@@ -20,16 +20,50 @@ func assertEqual(input uint64, expected int, t *testing.T) {
 	}
 }
 
-var input uint64 = 0xffff
-
-func BenchmarkPopCountTable(b *testing.B) {
+func BenchmarkPopCountTable1(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		PopCountTable(input)
+		PopCountTable(uint64(1))
 	}
 }
 
-func BenchmarkPopCount(b *testing.B) {
+func BenchmarkPopCount1(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		PopCount(input)
+		PopCount(uint64(1))
+	}
+}
+
+func BenchmarkPopCountTable100(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCountTable(uint64(100))
+	}
+}
+
+func BenchmarkPopCount100(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(uint64(100))
+	}
+}
+
+func BenchmarkPopCountTable1000(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCountTable(uint64(1000))
+	}
+}
+
+func BenchmarkPopCount1000(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(uint64(1000))
+	}
+}
+
+func BenchmarkPopCountTable10000(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCountTable(uint64(10000))
+	}
+}
+
+func BenchmarkPopCount10000(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(uint64(10000))
 	}
 }
