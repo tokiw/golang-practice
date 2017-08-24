@@ -1,0 +1,7 @@
+GOMAXPROCS:1 Calculated time : 18.888706ms
+GOMAXPROCS:2 Calculated time : 35.048374ms
+GOMAXPROCS:3 Calculated time : 21.846714ms
+GOMAXPROCS:4 Calculated time : 18.887224ms
+GOMAXPROCS:5 Calculated time : 18.596549ms
+GOMAXPROCS:6 Calculated time : 20.060332ms
+GOMAXPROCS:7 Calculated time : 20.079919ms

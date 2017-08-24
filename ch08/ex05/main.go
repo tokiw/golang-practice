@@ -11,9 +11,13 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"log"
 	"math"
 	"os"
+	"runtime"
+	"strconv"
 	"sync"
+	"time"
 )
 
 const (
@@ -28,7 +32,14 @@ const (
 var sin30, cos30 = math.Sin(angle), math.Cos(angle) // sin(30°), cos(30°)
 
 func main() {
-	drawParallel(os.Stdout, 4)
+	num, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		log.Fatal(err)
+	}
+	runtime.GOMAXPROCS(num)
+	start := time.Now()
+	drawParallel(os.Stdout, num)
+	log.Printf("Calculated time : %v\n", time.Since(start))
 }
 
 func drawParallel(dst io.Writer, num int) {
