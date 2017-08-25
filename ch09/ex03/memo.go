@@ -34,6 +34,7 @@ func New(f Func) *Memo {
 	return memo
 }
 
+// TODO: 2つの呼び出して片方がcancelするともう片方もcancelになってしまう。。。
 func (memo *Memo) Get(key string, done <-chan struct{}) (interface{}, error) {
 	response := make(chan result)
 	req := request{key, response, done}
@@ -55,6 +56,7 @@ func (memo *Memo) server(f Func) {
 	for {
 		select {
 		case req := <-memo.cancels:
+			// TODO: すでにキャッシュ済みの場合消してしまう。。。
 			delete(cache, req.key)
 			continue
 		case req := <-memo.requests:

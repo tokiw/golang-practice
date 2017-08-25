@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// 1スレッドのほうが早い。スレッドをまたがってのチャネルやりとりはオーバーヘッドが高い
 func BenchmarkPipeline10(b *testing.B) {
 	in, out := pipeline(10)
 	for i := 0; i < b.N; i++ {

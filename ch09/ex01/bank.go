@@ -2,14 +2,19 @@ package bank
 
 var deposits = make(chan int) // send amount to deposit
 var balances = make(chan int) // receive balance
-var withdraws = make(chan int)
-var results = make(chan bool)
+var withdraws = make(chan drawResult)
+
+type drawResult struct {
+	result chan bool
+	amount int
+}
 
 func Deposit(amount int) { deposits <- amount }
 func Balance() int       { return <-balances }
 func Withdraw(amount int) bool {
-	withdraws <- amount
-	return <-results
+	ch := make(chan bool)
+	withdraws <- drawResult{ch, amount}
+	return <-ch
 }
 
 func teller() {
@@ -19,12 +24,12 @@ func teller() {
 		case amount := <-deposits:
 			balance += amount
 		case balances <- balance:
-		case amount := <-withdraws:
-			if balance < amount {
-				results <- false
+		case draw := <-withdraws:
+			if balance < draw.amount {
+				draw.result <- false
 			} else {
-				balance -= amount
-				results <- true
+				balance -= draw.amount
+				draw.result <- true
 			}
 		}
 	}

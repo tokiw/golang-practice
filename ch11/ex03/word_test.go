@@ -109,13 +109,13 @@ func randomNonPalindrome(rng *rand.Rand) string {
 		}
 
 		runes := make([]rune, n)
-		for i := 0; i < n; i++ {
+		for i := 0; i < n; {
 			r := rune(rng.Intn(0x100))
 			if !unicode.IsLetter(r) {
-				n--
 				continue
 			}
 			runes[i] = r
+			i++
 		}
 		if unicode.ToLower(runes[0]) == unicode.ToLower(runes[n-1]) {
 			continue
@@ -124,7 +124,6 @@ func randomNonPalindrome(rng *rand.Rand) string {
 	}
 }
 
-// 通らない。。。
 func TestRandomNonPalindromes(t *testing.T) {
 	// Initialize a pseudo-random number generator.
 	seed := time.Now().UTC().UnixNano()
