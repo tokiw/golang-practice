@@ -13,7 +13,7 @@ var bitLength = 32 << (^uint(0) >> 63)
 // An IntSet is a set of small non-negative integers.
 // Its zero value represents the empty set.
 type IntSet struct {
-	words []uint64
+	words []uint
 }
 
 // Has reports whether the set contains the non-negative value x.

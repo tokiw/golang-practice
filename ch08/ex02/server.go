@@ -84,7 +84,7 @@ func handleConn(conn net.Conn) {
 			return
 		}
 	}
-}
+}s
 
 func writeResponse(conn net.Conn, resp <-chan response) {
 	for msg := range resp {

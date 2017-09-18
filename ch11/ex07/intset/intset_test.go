@@ -83,10 +83,12 @@ func TestSymmetricDifference(t *testing.T) {
 	}
 }
 
+// TODO: 乱数を外側で作って同じデータでベンチマークを取る必要がある。。。
 func BenchmarkMapIntSetAdd10(b *testing.B) {
 	n := 10
-	mapintset := NewMapIntSet()
+
 	for i := 0; i < b.N; i++ {
+		mapintset := NewMapIntSet()
 		for j := 0; j < n; j++ {
 			mapintset.Add(rand.Intn(100))
 		}
@@ -94,8 +96,9 @@ func BenchmarkMapIntSetAdd10(b *testing.B) {
 }
 func BenchmarkIntSetAdd10(b *testing.B) {
 	n := 10
-	var intset IntSet
+
 	for i := 0; i < b.N; i++ {
+		var intset IntSet
 		for j := 0; j < n; j++ {
 			intset.Add(rand.Intn(100))
 		}
@@ -103,8 +106,9 @@ func BenchmarkIntSetAdd10(b *testing.B) {
 }
 func BenchmarkMapIntSetAdd100(b *testing.B) {
 	n := 100
-	mapintset := NewMapIntSet()
+
 	for i := 0; i < b.N; i++ {
+		mapintset := NewMapIntSet()
 		for j := 0; j < n; j++ {
 			mapintset.Add(rand.Intn(100))
 		}
@@ -112,8 +116,9 @@ func BenchmarkMapIntSetAdd100(b *testing.B) {
 }
 func BenchmarkIntSetAdd100(b *testing.B) {
 	n := 100
-	var intset IntSet
+
 	for i := 0; i < b.N; i++ {
+		var intset IntSet
 		for j := 0; j < n; j++ {
 			intset.Add(rand.Intn(100))
 		}
@@ -121,8 +126,9 @@ func BenchmarkIntSetAdd100(b *testing.B) {
 }
 func BenchmarkMapIntSetAdd1000(b *testing.B) {
 	n := 1000
-	mapintset := NewMapIntSet()
+
 	for i := 0; i < b.N; i++ {
+		mapintset := NewMapIntSet()
 		for j := 0; j < n; j++ {
 			mapintset.Add(rand.Intn(100))
 		}
@@ -130,8 +136,9 @@ func BenchmarkMapIntSetAdd1000(b *testing.B) {
 }
 func BenchmarkIntSetAdd1000(b *testing.B) {
 	n := 1000
-	var intset IntSet
+
 	for i := 0; i < b.N; i++ {
+		var intset IntSet
 		for j := 0; j < n; j++ {
 			intset.Add(rand.Intn(100))
 		}
