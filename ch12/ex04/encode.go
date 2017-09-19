@@ -53,7 +53,8 @@ func encode(buf *bytes.Buffer, v reflect.Value) error {
 		buf.WriteByte('(')
 		for i := 0; i < v.Len(); i++ {
 			if i > 0 {
-				buf.WriteByte(' ')
+				buf.WriteByte('\n')
+				buf.WriteString("\t ")
 			}
 			if err := encode(buf, v.Index(i)); err != nil {
 				return err
@@ -72,6 +73,9 @@ func encode(buf *bytes.Buffer, v reflect.Value) error {
 				return err
 			}
 			buf.WriteByte(')')
+			if i < v.NumField()-1 {
+				buf.WriteByte('\n')
+			}
 		}
 		buf.WriteByte(')')
 
@@ -79,7 +83,8 @@ func encode(buf *bytes.Buffer, v reflect.Value) error {
 		buf.WriteByte('(')
 		for i, key := range v.MapKeys() {
 			if i > 0 {
-				buf.WriteByte(' ')
+				buf.WriteByte('\n')
+				buf.WriteString("\t ")
 			}
 			buf.WriteByte('(')
 			if err := encode(buf, key); err != nil {
