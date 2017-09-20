@@ -1,10 +1,10 @@
 package sexpr
 
 import (
-	"testing"
+	"fmt"
 )
 
-func Test(t *testing.T) {
+func Example_nil() {
 	type sample struct {
 		sampleMap   map[string][]string
 		sampleSlice []string
@@ -22,7 +22,16 @@ func Test(t *testing.T) {
 	// Encode it
 	encodedData, err := Marshal(data)
 	if err != nil {
-		t.Fatalf("Marshal failed: %v", err)
+		return
 	}
-	t.Logf("\n%s\n", encodedData)
+	fmt.Printf("%s", encodedData)
+
+	// Output:
+	// {
+	//	"sampleMap": {
+	//		"key2": [
+	//			"value2"
+	//		]
+	//	}
+	// }
 }
