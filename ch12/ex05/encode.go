@@ -23,12 +23,12 @@ func printTab(buf *bytes.Buffer, n int) {
 func encode(buf *bytes.Buffer, v reflect.Value, tabCount int) error {
 	switch v.Kind() {
 	case reflect.Invalid:
-		buf.WriteString("nil")
+		buf.WriteString("null")
 	case reflect.Bool:
 		if v.Bool() {
 			buf.WriteString("t")
 		} else {
-			buf.WriteString("nil")
+			buf.WriteString("null")
 		}
 
 	case reflect.Int, reflect.Int8, reflect.Int16,

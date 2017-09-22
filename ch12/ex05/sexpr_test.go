@@ -1,6 +1,7 @@
 package sexpr
 
 import (
+	"encoding/json"
 	"testing"
 )
 
@@ -38,4 +39,9 @@ func Test(t *testing.T) {
 		t.Fatalf("Marshal failed: %v", err)
 	}
 	t.Logf("\n%s\n", data)
+
+	var movie Movie
+	if err := json.Unmarshal(data, &movie); err != nil {
+		t.Fatalf("Unmarshal failed: %v", err)
+	}
 }
