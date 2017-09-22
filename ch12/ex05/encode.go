@@ -28,7 +28,7 @@ func encode(buf *bytes.Buffer, v reflect.Value, tabCount int) error {
 		if v.Bool() {
 			buf.WriteString("true")
 		} else {
-			buf.WriteString("null")
+			buf.WriteString("false")
 		}
 
 	case reflect.Int, reflect.Int8, reflect.Int16,
