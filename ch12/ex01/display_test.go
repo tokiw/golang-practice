@@ -99,7 +99,7 @@ func Example_structMapKey() {
 		st{"hoge"}: 0,
 		st{"fuga"}: 1,
 	})
-	// Output:
+	// Unordered Output:
 	// Display s (map[display.st]int):
 	// s[{field="hoge"}] = 0
 	// s[{field="fuga"}] = 1
@@ -110,7 +110,7 @@ func Example_arrayMapKey() {
 		[1]int{0}: 0,
 		[1]int{1}: 1,
 	})
-	// Output:
+	// Unordered Output:
 	// Display s (map[[1]int]int):
 	// s[[0]] = 0
 	// s[[1]] = 1
@@ -121,7 +121,7 @@ func Example_arrayMapKey2() {
 		[2]int{0, 1}: 0,
 		[2]int{1, 2}: 1,
 	})
-	// Output:
+	// Unordered Output:
 	// Display s (map[[2]int]int):
 	// s[[0 1]] = 0
 	// s[[1 2]] = 1
@@ -132,7 +132,7 @@ func Example_arrayMapKey3() {
 		[2][1]int{{0}, {1}}: 0,
 		[2][1]int{{1}, {2}}: 1,
 	})
-	// Output:
+	// Unordered Output:
 	// Display s (map[[2][1]int]int):
 	// s[[[0] [1]]] = 0
 	// s[[[1] [2]]] = 1
